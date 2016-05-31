@@ -48,7 +48,7 @@ describe Oystercard do
   it 'remembers the entry station' do
     card.top_up(5)
     card.touch_in(:station1)
-    expect(card.entry_station).to eq :station1
+    expect(card.journeys.last[:entry]).to eq :station1
   end
 
   it 'has an empty journey history on creation' do
