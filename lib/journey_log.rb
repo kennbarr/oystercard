@@ -20,4 +20,9 @@ class JourneyLog
   def in_journey?
     @journey.in_journey?
   end
+
+  #What is current_journey for??
+  def current_journey
+    in_journey? ? @journey : @journey = Journey.new
+  end
 end
