@@ -2,9 +2,7 @@ require_relative 'journey'
 require_relative 'journey_log'
 
 class Oystercard
-
   attr_reader :balance, :log
-
   LIMIT = 90
   MIN_BALANCE = 1
 
@@ -30,8 +28,7 @@ class Oystercard
   end
 
   private
-    def deduct(fare = MIN_BALANCE)
+    def deduct
       @balance -= @log.journey.fare
     end
-
 end

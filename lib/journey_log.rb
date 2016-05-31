@@ -12,12 +12,9 @@ class JourneyLog
   end
 
   def finish(station)
-    if in_journey?
-      @journeys << @journey.finish(station)
-    else
-      @journey = Journey.new(nil)
-      @journeys << @journey.finish(station)
-    end
+    return @journeys << @journey.finish(station) if in_journey?
+    @journey = Journey.new(nil)
+    @journeys << @journey.finish(station)
   end
 
   def in_journey?
