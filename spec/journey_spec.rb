@@ -6,15 +6,15 @@ describe Journey do
   let(:start_station) {double :start_station, zone: 1}
   let(:finish_station) {double :finish_station,zone:  1}
 
-  it "can start a journey" do
-    journey.start(start_station)
-    expect(journey.start_station).to eq start_station
-  end
-
-  it "can finish a journey" do
-    journey.finish(finish_station)
-    expect(journey.finish_station).to eq finish_station
-  end
+  # it "can start a journey" do
+  #   journey.start(start_station)
+  #   expect(journey.start_station).to eq start_station
+  # end
+  #
+  # it "can finish a journey" do
+  #   journey.finish(finish_station)
+  #   expect(journey.finish_station).to eq finish_station
+  # end
 
   it "charges a penalty fare for incomplete journeys" do
     journey.start(start_station)

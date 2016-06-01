@@ -5,8 +5,6 @@ class Oystercard
   MAXIMUM_BALANCE = 90
   MINIMUM_BALANCE = 1
 
-  attr_reader :balance, :log
-
   def initialize
     @balance = 0
     @log = JourneyLog.new
@@ -33,7 +31,7 @@ class Oystercard
 
   private
 
-  attr_reader :journey
+  attr_reader :journey, :balance, :log
 
   def deduct
     @balance -= log.journeys.last.fare

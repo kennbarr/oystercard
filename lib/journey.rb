@@ -2,8 +2,6 @@ require_relative 'station'
 
 class Journey
 
-  attr_reader :start_station, :finish_station
-
   MAXIMUM_FARE = 6
   MINIMUM_FARE = 1
 
@@ -25,9 +23,9 @@ class Journey
     !!@start_station && @finish_station.nil?
   end
 
+  private
 
-
-private
+  attr_reader :start_station, :finish_station
 
   def complete?
     ![@start_station, @finish_station].include? :Incomplete
