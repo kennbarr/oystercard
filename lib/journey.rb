@@ -9,12 +9,10 @@ class Journey
 
   def start(station)
     @start_station = station
-
   end
 
   def finish(station)
     @finish_station = station
-
   end
 
   def fare
@@ -24,8 +22,6 @@ class Journey
   def in_journey?
     !!@start_station && @finish_station.nil?
   end
-
-
 
 private
 

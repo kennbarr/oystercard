@@ -10,32 +10,33 @@ class JourneyLog
   end
 
   def start(station)
-    if @current_journey.in_journey?
-      finish(:Incomplete)
-    end
+    finish(:Incomplete) if in_journey?
     @current_journey.start(station)
   end
 
   def finish(station)
-    if @current_journey.in_journey?
-      @current_journey.finish(station)
-      new_journey
-    else
-      @current_journey.start(:Incomplete)
-      @current_journey.finish(station)
-      new_journey
-    end
+    in_journey? ? complete_journey(station) : incomplete_journey(station)
+    new_journey
   end
 
+private
 
   def new_journey
     @journeys << @current_journey
     @current_journey = Journey.new
   end
 
+  def in_journey?
+    @current_journey.in_journey?
+  end
 
-  private
+  def complete_journey(station)
+    @current_journey.finish(station)
+  end
 
-
+  def incomplete_journey(station)
+    @current_journey.start(:Incomplete)
+    @current_journey.finish(station)
+  end
 
 end

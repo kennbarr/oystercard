@@ -33,8 +33,6 @@ class Oystercard
 
   private
 
-  attr_reader :journey
-
   def deduct
     @balance -= log.journeys.last.fare
   end
