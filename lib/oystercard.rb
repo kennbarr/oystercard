@@ -16,10 +16,7 @@ class Oystercard
   end
 
   def touch_in(entry_station)
-    if log.current_journey.in_journey?
-      @log.finish(:Incomplete)
-      deduct
-    end
+    finish_journey if in_journey?
     fail "Insufficient balance." if @balance < MINIMUM_BALANCE
     @log.start(entry_station)
   end
@@ -35,6 +32,15 @@ class Oystercard
 
   def deduct
     @balance -= log.journeys.last.fare
+  end
+
+  def finish_journey
+    @log.finish(:Incomplete)
+    deduct
+  end
+
+  def in_journey?
+    log.in_journey?
   end
 
 end
