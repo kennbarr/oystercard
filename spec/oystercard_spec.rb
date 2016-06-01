@@ -15,9 +15,6 @@ describe Oystercard do
       subject.touch_in(entry_station)
     end
 
-    it "should let oystercard know it is in a journey." do
-      expect(subject.in_journey?).to eq true
-    end
   end
 
   describe "#top_up" do
@@ -27,24 +24,11 @@ describe Oystercard do
   	end
   end
 
-  describe "#touch_in" do
-
-    it "should return station if user touched in" do
-      expect(subject.touch_in(entry_station)).to eq entry_station
-    end
-
-  end
-
   describe "#touch_out" do
 
     before(:each) do
       subject.touch_in(entry_station)
     end
-
-    it "should deduct a fare on touch_out" do
-      expect{subject.touch_out(exit_station)}.to change{subject.balance}.by -(Oystercard::MINIMUM_FARE)
-    end
-
   end
 
 end
