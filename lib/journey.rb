@@ -21,7 +21,6 @@ class Journey
     !!@start_station && @finish_station.nil?
   end
 
-
   private
 
   attr_reader :start_station, :finish_station
